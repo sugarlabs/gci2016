@@ -1,0 +1,34 @@
+//* arg-globals *//
+var block = logo.blocks.blockList[blk];
+var conns = block.connections;
+
+//* block-globals *//
+var convertBlock = function (name, label, arg1, arg2) {
+    var protoblock = new ProtoBlock(name);
+    protoblock.palette = palettes.dict['converter'];
+    blocks.protoBlockDict[name] = protoblock;
+    protoblock.staticLabels.push(label, _('number'), _('unit to convert'));
+    protoblock.adjustWidthToLabel();
+    protoblock.twoArgMathBlock();
+    protoblock.dockTypes[2] = 'anyin';
+    protoblock.defaults.push(arg1);
+    protoblock.defaults.push(arg2);
+};
+
+//* block:from_mm *//
+convertBlock('from_mm', 'from mm', 1000, 'mm');
+
+//* arg:from_mm *//
+var arg = logo.parseArg(logo, turtle, conns[1]);
+var unit = logo.parseArg(logo, turtle, conns[2]);
+if (unit == 'mm'){
+block.value = arg*0.001;
+}
+
+//* palette-icon:converter *//
+<svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"><g transform="matrix(1.25 0 0 1.25-7.5-6.25)"><g font-family="Sans" word-spacing="0" line-height="125%" letter-spacing="0" font-size="20"><text x="10" y="10"><tspan x="20" y="35" fill="#fff">len</tspan></text></g></g><g fill="#fff" stroke="#fff"><path d="m10.5 14.5h35"/><path d="m15.5 44.5v-35"/></g></svg>
+
+//* palette-fill:converter *// #ff00ff
+//* palette-stroke:converter *// #C700D3
+//* palette-highlight:converter *// #FF9FFF
+//* palette-stroke-highlight:converter *// #000000

@@ -1,0 +1,39 @@
+h1{
+  font-family: 'Montserrat' , sans-serif;
+  font-size: 2em;
+  text-align: center;
+  font-weight: 700;
+  color: #F68657;
+}
+.middle{
+  margin-top: 50px;
+}
+img{
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button{
+  border-radius: 1.5px;
+  background-color: #2196f3;
+  border: none;
+  height: 36px;
+  font-family: 'Roboto' , sans-serif;
+  font-size: 14px;
+  color: white;
+  float: left;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.buttons{
+  display: block;
+  margin-left: 35%;
+  margin-top: 30px;
+  width: 350px;
+  height: 80px;
+}
+.buttons > .new {
+  position: relative;
+  margin-left: 50px;
+}

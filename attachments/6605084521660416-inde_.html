@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+textarea{
+	width:275px;
+	height:539px;
+	padding:8px 15px;
+	position:absolute;
+	top:68.5px;
+	font-size:20px;
+	color:blue;
+	left:10px;}
+
+button{
+	width:307px;
+	background-color: #4CAF50; 
+	border: none;
+	position:absolute;
+	top:10px;
+	left:10px;
+    	color: white;
+    	padding: 15px 32px;
+    	text-align: center;
+    	text-decoration: none;
+   	display: inline-block;
+    	font-size: 24px;}
+
+table{
+	background-color:#FF5733;
+	float:left;
+	position:absolute;
+	top:10px;
+	right:10px;
+	border-collapse:collapse;}
+
+td{
+	border:1px solid #C0B9B8;
+	padding:20px;
+	transition:background-color 4s}
+
+body{
+	background-image:url("stone.jpg");}
+
+@keyframes movement{
+	 from {background-color: #FF5733;}
+   	 to {background-color: yellow;}}
+
+@keyframes comp{
+	 from {background-color: #13EEF1;}
+   	 to {background-color: #FFFFFF;}}
+</style>
+<script src="script.js">
+</script>
+</head>
+<body onload="loaded()"><div>
+<button onclick="execute()" id="ebutton">Execute</button>
+<textarea id="e"></textarea></div>
+<table id="environment">
+</table>
+</body>
+</html>
+
+
+

@@ -1,0 +1,33 @@
+﻿To install sugar devlopment invornement in windows oprating system you need to fowllow some steps.
+
+Step:-1) First you need to download vmware or virtualbox.
+Form these sites.(1)www.virtualbox.org. (2)www.vmware.com
+then run .exe and install one fo them.
+      Step:-2) Donwload ubuntu 14.04 iso image. 
+form this site.(1) releases.ubuntu.com/14.04/
+      Step:-3) Open virtualbox click on “new” button.enter the name you want to give your machine.In “type” click dropdown and select linux then choose version acording to to your system(64 or 32 bit) click next.
+Then give machine ram meomry. I recommend half will be good.In next three option will be given in hard disk option. 
+Click on the second “create a virtual hard disk now”.Then again three option will appear.select first option “vdi” and click next.
+In next choose “dynamically allocated” click next then.
+Next you have to choose how much disk space you want to give your virtual machine (note:- give atleast 20Gb.)
+Your virtual machine is created double click on it or click on the start button to run it.
+      Step:-4) Install ubuntu.
+      Step:-5) After the insatllation is done.run the terminal (press ctrl+alt+t) and install Git.
+use the following command:-sudo apt-get insatll git 
+      Step:-6) Clone the repo by
+following command:-1)git clone git://github.com/sugarlabs/sugar-build.git
+2)cd sugar-build
+ ./osbuild pull.
+3) After completing the pull command, you need to build.
+./osbuild shell
+build
+4) finally run 
+run
+It will start sugar devlopment environment.
+enjoy!
+
+
+  
+
+
+

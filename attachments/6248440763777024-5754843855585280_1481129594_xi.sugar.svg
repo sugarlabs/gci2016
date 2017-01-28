@@ -1,0 +1,17 @@
+<?xml version="1.0" ?><!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [
+	<!ENTITY stroke_color "#666666">
+	<!ENTITY fill_color "#ffffff">
+]><svg enable-background="new 0 0 55 55" id="Layer_1" version="1.1" viewBox="0 0 55 55" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="18" x="0.5" y="0.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="19" x="18.5" y="0.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="17" x="37.5" y="0.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="18" x="0.5" y="18.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="19" x="18.5" y="18.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="17" x="37.5" y="18.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="18" x="0.5" y="36.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="19" x="18.5" y="36.5"/>
+<rect fill="&fill_color;" height="18" stroke="&stroke_color;" stroke-miterlimit="10" width="17" x="37.5" y="36.5"/>
+<path d="M31.4,32.1L31.4,32.1c-0.3,0.3-1.1,0.3-1.4,0l-6.4-6.5c-0.3-0.3-0.3-1.1,0-1.4l0,0c0.3-0.3,1.1-0.3,1.4,0  l6.5,6.5C32,31.1,32,31.7,31.4,32.1z" fill="&stroke_color;"/>
+<path d="M23.6,32.1L23.6,32.1c-0.3-0.3-0.3-1.1,0-1.4l6.5-6.5c0.3-0.3,1.1-0.3,1.4,0l0,0c0.3,0.3,0.3,1.1,0,1.4  l-6.5,6.5C24.6,32.5,24.1,32.5,23.6,32.1z" fill="&stroke_color;"/>
+<circle cx="28" cy="11.3" fill="&stroke_color;" r="2.5"/>
+</svg>

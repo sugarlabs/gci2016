@@ -1,0 +1,93 @@
+* {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  position: relative;
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+#main-toolbar #activity-button {
+  background-image: url("helloweb.svg");
+}
+.toolbar {
+  color: white;
+  background-color: #615F5F;
+  padding: 0 57px;
+  height: 55px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.toolbar hr {
+  display: inline-block;
+  height: 33px;
+  border: 1px solid #808080;
+  margin: 0,0,0,2.5px;
+  
+}
+/* Toolbar toolbutton */
+.toolbar .toolbutton {
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: white;
+  color: transparent;
+  border: 0;
+  margin: 0px 2px;
+  width: 47px;
+  height: 55px;
+  position: relative;
+}
+.toolbar .toolbutton:hover {
+  background-color: black;
+}
+
+.toolbar .toolbutton.active {
+  background-color: #808080;
+}
+h1{
+        font-size:50px
+ }
+
+.al{
+        width: 25%;
+	margin: 40px auto;
+	background-color: #efefef;
+}
+.toolbar #stop-button {
+  background-image: url('activity-stop.svg');
+}
+.b{
+  border-radius:5px;
+  background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+
+
+li {
+    float: left;
+    padding:50px;
+}
+.b:hover{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}

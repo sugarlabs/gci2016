@@ -1,0 +1,78 @@
+diff --git a/guide/README.md b/guide/README.md
+index 9f8a354..77c587f 100755
+--- a/guide/README.md
++++ b/guide/README.md
+@@ -1,16 +1,69 @@
+ Guide to Programming with Music Blocks
+ ======================================
+-
++  
+ Music Blocks is a programming environment for children interested in
+-music and graphics. It expands upon Turtle Blocks in that it has a
++music and graphics. It expands upon Turtle Blocks by adding a 
+ collection of features relating to pitch and rhythm.
+ 
+ The Turtle Blocks guide is a good place to start learning about the
+-basics. In this guide, we illustrate the music features walking the
++basics. In this guide, we illustrate the musical features by walking the
+ reader through numerous examples.
+ 
+-Getting Started
++<a name="TOC">
++TABLE OF CONTENTS
++----------------
++</a>
++
++1. [Getting Started](#GETTING-STARTED)
++2. [Making a Sound](#NOTES)
++  1. [Note Value Blocks](#NOTE-VALUE)
++  2. [Pitch Blocks] (#PITCH)
++  3. [Chords] (#CHORDS)
++  4. [Rests] (#RESTS)
++  5. [Drums] (#DRUMS)
++3. [Programming with Music] (#PROGRAMMING-WITH-MUSIC)
++  1. [Chunks] (#CHUNKS)
++  2. [Musical Transformation] (#TRANSFORMATION)
++    1. [Step Pitch Block] (#STEP-PITCH)
++    2. [Sharps and Flats] (#SHARPS-AND-FLATS)
++    3. [Adjust-Transposition Block] (#ADJUST-TRANSPOSITION)
++    4. [Dotted Notes] (#DOTTED)
++    5. [Speeding Up and Slowing Down Notes via Mathematical Operations] (#MULTIPLY-AND-DIVIDE)
++    6. [Repeating Notes] (#REPETITION)
++    7. [Swinging Notes and Tied Notes] (#SWINGING)
++    8. [Set Volume, Crescendo, Staccato, and Slur Blocks] (#MORE-TRANSFORMATIONS)
++    9. [Intervals and Articulation] (#INTERVALS-AND-ARTICULATION)
++    10. [Absolute Intervals] (#ABSOLUTE-INTERVALS)
++    11. [Inversion] (#INVERSION)
++    12. [Backwards] (#BACKWARDS)
++    13. [Setting Voice and Keys] (#SETTING)
++  3. [Voices] (#VOICES)
++  4. [Graphics] (#GRAPHICS)
++  5. [Interactions] (#INTERACTIONS)
++4. [Widgets] (#WIDGETS)
++  1. [Monitoring status](#status)
++  2. [Generating chunks of notes](#pitch-time)
++    1. [Pitch-Time Matrix] (#pitch-time) 
++    2. [The Rhythm Block] (#THE-RHYTHM-BLOCK) 
++    3. [Creating Tuplets] (#CREATING-TUPLETS)
++    4. [Using Individual Notes in the Matrix] (#INDIVIDUAL-NOTES)
++  3. [Generating rhythms](#rhythms)
++  4. [Musical Modes](#modes)
++  5. [The Pitch-Drum Matrix](#pitch-drum)
++  6. [Exploring musical proportions](#staircase)
++  7. [Generating arbitrary pitches](#slider)
++  8. [Changing tempo](#tempo)
++5. [Beyond Music Blocks] (#BEYOND-MUSIC-BLOCKS)
++
++Many of the examples given in the guide have links to code you can
++run. Look for RUN LIVE links.
++
++
++<a name="GETTING-STARTED">
++1. GETTING STARTED                                                     
+ ---------------
++</a>
++[Back to Table of Contents](#TOC)
+ 
+ Music Blocks is designed to run in a browser. Most of the development
+ has been done in Chrome, but it should also work in Firefox (although

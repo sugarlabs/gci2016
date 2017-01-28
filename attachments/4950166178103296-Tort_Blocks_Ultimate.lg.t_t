@@ -1,0 +1,62 @@
+window
+to taarc :a :r
+repeat round :a [right 1 forward (0.0175 * :r)]
+end
+to tarandom :min :max
+ output (random (:max - :min)) + :min
+end
+to #striangulo
+ repeat 3.0 [ left 120.0 forward 150.0 ] 
+end
+to #scuadrado
+ repeat 4.0 [ forward 100.0 left 90.0 ] 
+end
+to #shexagono
+ repeat 6.0 [ left 60.0 forward 100.0 ] 
+end
+to #spentagono
+ repeat 5.0 [ forward 100.0 left 72.0 ] 
+end
+to #sheptagono
+ repeat 7.0 [ left 51.42 forward 100.0 ] 
+end
+to #seneagono
+ repeat 9.0 [ left 40.0 forward 100.0 ] 
+end
+to #soptagono
+ repeat 8.0 [ left 45.0 forward 100.0 ] 
+end
+to #sDecagono
+ repeat 10.0 [ left 36.0 forward 100.0 ] 
+end
+to #srectangulo
+ repeat 2.0 [ forward 104.0 left 90.0 forward 60.0 left 90.0 ] 
+end
+to turtleblocks_0
+_forever_1 
+end
+to #scirculo
+ repeat 4.0 [ taarc 90.0 100.0 ] 
+end
+to #ssorteo
+ make "#svalor tarandom 0.0 10.0 
+end
+to start
+ hideblocks fullscreen #ssorteo if equal? :#svalor 3.0 [ #striangulo label sentence "es "un "triangulo
+ wait 3.0 clean ] if equal? :#svalor 4.0 [ #scuadrado label sentence "es "un "cuadrado
+ wait 3.0 clean ] if equal? :#svalor 0.0 [ #scirculo label sentence "es "un "circulo
+ wait 3.0 clean ] if equal? :#svalor 4.0 [ #srectangulo label sentence "es "un "rectangulo
+ wait 2.0 clean ] if equal? :#svalor 5.0 [ #spentagono label sentence "es "un "pentagono
+ wait 3.0 clean ] otros showblocks 
+end
+to #sotros
+ if equal? :#svalor 6.0 [ #shexagono label sentence "es "un "hexagono
+ wait 3.0 ] if equal? :valor 1.0 [ clean ] if equal? :#svalor 7.0 [ #sheptagono label sentence "es "un "heptagono
+ wait 3.0 clean ] if equal? :#svalor 8.0 [ #soptagono label sentence "es "un "optagono
+ wait 3.0 clean ] if equal? #svalor 9.0 [ #seneanogo label sentence "es "un "eneagono
+ wait 3.0 clean ] if equal? :#svalor 10.0 [ #sdecanogo label sentence "es "un "decanogo
+ wait 3.0 clean ] showblocks 
+end
+to turtleblocks_1
+#ssorteo #ssorteo 
+end

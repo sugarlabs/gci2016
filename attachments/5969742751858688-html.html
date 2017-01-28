@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Changes activity</title>
+		
+		<link rel="stylesheet" href="css.css">
+		
+<script>
+var r= Math.floor(Math.random()*1000)+1;
+function load(){
+document.getElementById("random").innerHTML = 0;
+document.getElementById("r").innerHTML = r;
+}
+var q=0;
+function one() {
+    q=q+1;
+    document.getElementById("random").innerHTML = q;
+if(r==q)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+function two() {
+    q=q+2;
+    document.getElementById("random").innerHTML = q;
+if(r==q)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+function five() {
+    q=q+5;
+    document.getElementById("random").innerHTML = q;
+if(r==q)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+function ten() {
+    q=q+10;
+    document.getElementById("random").innerHTML = q;
+if(r==q)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+function twenty() {
+    q=q+20;
+    document.getElementById("random").innerHTML = q;
+if(r==q)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+function fifty() {
+    q=q+50;
+    document.getElementById("random").innerHTML = q;
+if(r==q)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+function hundred() {
+    q=q+100;
+    document.getElementById("random").innerHTML = q;
+    if(q==r)
+{
+document.getElementById("a").style.background="#4CAF50";
+}
+}
+</script>
+
+	</head>
+
+	<body onload="load()">
+
+		<div id="main-toolbar" class="toolbar">
+			<button class="toolbutton" id="activity-button" title="Hello World"></button>
+			<hr />
+			<button class="toolbutton pull-right" id="stop-button" title="Stop"></button>
+		</div>
+
+                                       <div class="al"><h1 align="center" id="r"></h1></div>
+                                   		
+                                       <div class="al" id="a" ><h1 align="center" id="random"></h1></div>
+                                       
+                         
+<ul>
+<li><button onclick="one()" class="b"  >$1</button>
+</li>
+
+<li><button onclick="two()" class="b">$2</bottom>
+</li>
+
+<li><button onclick="five()" class="b" >$5</bottom>
+</li>
+
+<li><button onclick="ten()" class="b" >$10</bottom>
+</li>
+
+<li><button onclick="twenty()" class="b" >$20</bottom>
+</li>
+
+<li><button onclick="fifty()" class="b"  >$50</bottom>
+</li>
+
+<li><button onclick="hundred()" class="b">$100</bottom>
+</li>
+ 
+
+	</body>
+</html> 

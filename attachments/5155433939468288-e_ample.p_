@@ -1,0 +1,323 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+_INSTALL_PATH = '/usr/share/sugar/activities/TurtleArt.activity'
+_ALTERNATIVE_INSTALL_PATH = \
+    '/usr/local/share/sugar/activities/TurtleArt.activity'
+
+import os, sys, dbus
+paths = []
+
+paths.append('../%s.activity')
+paths.append(os.path.expanduser('~') + '/Activities/%s.activity')
+paths.append('/usr/share/sugar/activities/%s.activity')
+paths.append('/usr/local/share/sugar/activities/%s.activity')
+paths.append(
+    '/home/broot/sugar-build/build/install/share/sugar/activities/%s.activity')
+paths.append('/home/broot/sugar-build/build/out/install/share/sugar/activities/TurtleBlocks.activity')
+flag = False
+for path in paths:
+    for activity in ['TurtleBots', 'TurtleBlocks']:
+        p = (path % activity) if "%" in path else path
+
+        if os.path.exists(p) and p not in sys.path:
+            flag = True
+            sys.path.insert(0, p)
+
+if not flag:
+    print 'This code require the Turtle Blocks/Bots activity to be installed.'
+    exit(1)
+
+from time import *
+from random import uniform
+from math import *
+
+from pyexported.window_setup import *
+
+
+tw = get_tw()
+
+BOX = {}
+ACTION = {}
+
+global_objects = None
+turtles = None
+canvas = None
+logo = None
+
+def triangulo():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(3.0)):
+        turtle.left(120.0)
+        turtle.forward(150.0)
+        yield True
+    yield True
+ACTION["triangulo"] = triangulo
+
+def cuadrado():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(4.0)):
+        turtle.forward(100.0)
+        turtle.left(90.0)
+        yield True
+    yield True
+ACTION["cuadrado"] = cuadrado
+
+def hexagono():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(6.0)):
+        turtle.left(60.0)
+        turtle.forward(100.0)
+        yield True
+    yield True
+ACTION["hexagono"] = hexagono
+
+def pentagono():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(5.0)):
+        turtle.forward(100.0)
+        turtle.left(72.0)
+        yield True
+    yield True
+ACTION["pentagono"] = pentagono
+
+def heptagono():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(7.0)):
+        turtle.left(51.42)
+        turtle.forward(100.0)
+        yield True
+    yield True
+ACTION["heptagono"] = heptagono
+
+def eneagono():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(9.0)):
+        turtle.left(40.0)
+        turtle.forward(100.0)
+        yield True
+    yield True
+ACTION["eneagono"] = eneagono
+
+def optagono():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(8.0)):
+        turtle.left(45.0)
+        turtle.forward(100.0)
+        yield True
+    yield True
+ACTION["optagono"] = optagono
+
+def Decagono():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(10.0)):
+        turtle.left(36.0)
+        turtle.forward(100.0)
+        yield True
+    yield True
+ACTION["Decagono"] = Decagono
+
+def rectangulo():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(2.0)):
+        turtle.forward(104.0)
+        turtle.left(90.0)
+        turtle.forward(60.0)
+        turtle.left(90.0)
+        yield True
+    yield True
+ACTION["rectangulo"] = rectangulo
+
+def circulo():
+    turtle = turtles.get_active_turtle()
+    for i in range(int(4.0)):
+        turtle.arc(90.0, 100.0)
+        yield True
+    yield True
+ACTION["circulo"] = circulo
+
+def sorteo():
+    turtle = turtles.get_active_turtle()
+    BOX[u'valor'] = int(round(uniform(int(0.0), int(10.0)), 0))
+    yield True
+ACTION["sorteo"] = sorteo
+
+def start():
+    tw.start_plugins()
+    global global_objects,turtles,canvas,logo
+    global_objects = tw.get_global_objects()
+    turtles = tw.turtles
+    canvas = tw.canvas
+    logo = tw.lc
+    logo.boxes = BOX
+    turtle = turtles.get_active_turtle()
+    logo.icall(ACTION[u'sorteo'])
+    yield True
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 3.0):
+        logo.icall(ACTION[u'triangulo'])
+        yield True
+        tw.print_(u'es un triangulo', False)
+        print u'es un triangulo'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 4.0):
+        logo.icall(ACTION[u'cuadrado'])
+        yield True
+        tw.print_(u'es un cuadrado', False)
+        print u'es un cuadrado'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 0.0):
+        logo.icall(ACTION[u'circulo'])
+        yield True
+        tw.print_(u'es un circulo', False)
+        print u'es un circulo'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 2.0):
+        logo.icall(ACTION[u'rectangulo'])
+        yield True
+        tw.print_(u'es un rectangulo', False)
+        print u'es un rectangulo'
+        sleep(2.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 5.0):
+        logo.icall(ACTION[u'pentagono'])
+        yield True
+        tw.print_(u'es un pentagono', False)
+        print u'es un pentagono'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    logo.icall(ACTION[u'otros'])
+    yield True
+ACTION["start"] = start
+
+def otros():
+    turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 6.0):
+        logo.icall(ACTION[u'hexagono'])
+        yield True
+        tw.print_(u'es un hexagono', False)
+        print u'es un hexagono'
+        sleep(3.0)
+        yield True
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 7.0):
+        logo.icall(ACTION[u'heptagono'])
+        yield True
+        tw.print_(u'es un heptagono', False)
+        print u'es un heptagono'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (u'valor' == str(9.0)):
+        logo.icall(ACTION[u'eneanogo'])
+        yield True
+        tw.print_(u'es un eneagono', False)
+        print u'es un eneagono'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 1.0):
+        tw.print_(u'Intentalo de nuevo', False)
+        print u'Intentalo de nuevo'
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 8.0):
+        logo.icall(ACTION[u'optagono'])
+        yield True
+        tw.print_(u'es un optagono', False)
+        print u'es un optagono'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    if (convert(BOX[u'valor'], TYPE_NUMBER) == 10.0):
+        logo.icall(ACTION[u'decanogo'])
+        yield True
+        tw.print_(u'es un decanogo', False)
+        print u'es un decanogo'
+        sleep(3.0)
+        yield True
+        tw.clear_plugins()
+        logo.stop_playing_media()
+        logo.reset_scale()
+        logo.clear_value_blocks()
+        canvas.clearscreen()
+        logo.reset_internals()
+        turtles.reset_turtles()
+        turtle = turtles.get_active_turtle()
+    yield True
+ACTION["otros"] = otros
+
+
+if __name__ == '__main__':
+    tw.lc.start_time = time()
+    tw.lc.icall(start)
+    gobject.idle_add(tw.lc.doevalstep)
+    gtk.main()

@@ -1,0 +1,42 @@
+#headbar{
+    margin: auto;
+	padding: 5px 7px;
+	display: block;
+	border: 2px solid #000;
+	width:  360px;
+	background: #fff;
+	text-align: center;
+	font-size: 30px;
+	}
+
+.photo{
+	width: 500px;
+	margin: auto;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 2px solid #000;
+	padding: 7px 5px;
+}
+nav{
+	display: block;
+	width: 500px;
+	margin: auto;
+	font-size: 15px;
+}
+nav li{
+	display: inline-block;
+	line-height: 40px;
+	width: 66px;
+	height: 40px;
+	background: rgba(00,00,00,00);
+	border: none;
+	text-align: center;
+	margin-right: 2px;
+	background: #eee;
+}
+
+li:hover{
+	box-shadow: 0px 2px 0px #f00;
+	background: #00f;
+}

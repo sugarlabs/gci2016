@@ -1,0 +1,71 @@
+[hrishi@localhost sugar-build]$ git clone git://github.com/sugarlabs/sugar-build.git
+Cloning into 'sugar-build'...
+remote: Counting objects: 6638, done.
+remote: Total 6638 (delta 0), reused 0 (delta 0), pack-reused 6638
+Receiving objects: 100% (6638/6638), 1.17 MiB | 182.00 KiB/s, done.
+Resolving deltas: 100% (3321/3321), done.
+Checking connectivity... done.
+[hrishi@localhost sugar-build]$ cd sugar-build
+[hrishi@localhost sugar-build]$ ./osbuild pull
+
+= Setup the build system =
+
+* Installing system deps
+[sudo] password for hrishi: 
+Fedora 25 - i386 - Updates                        181 kB/s | 5.7 MB     00:32    
+Last metadata expiration check: 0:00:21 ago on Wed Nov 30 22:16:51 2016.
+Package xorg-x11-utils-7.5-21.fc24.i686 is already installed, skipping.
+Package gcc-6.2.1-2.fc25.i686 is already installed, skipping.
+Package bzip2-1.0.6-20.fc24.i686 is already installed, skipping.
+Package xz-5.2.2-2.fc24.i686 is already installed, skipping.
+Package sudo-1.8.18-1.fc25.i686 is already installed, skipping.
+Package file-5.28-4.fc25.i686 is already installed, skipping.
+Package deltarpm-3.6-17.fc25.i686 is already installed, skipping.
+Package make-1:4.1-5.fc24.i686 is already installed, skipping.
+Package git-2.9.3-1.fc25.i686 is already installed, skipping.
+Package findutils-1:4.6.0-8.fc25.i686 is already installed, skipping.
+Package tar-2:1.29-1.fc25.i686 is already installed, skipping.
+Package gstreamer1-plugins-good-1.9.2-1.fc25.i686 is already installed, skipping.
+Package shadow-utils-2:4.2.1-11.fc25.i686 is already installed, skipping.
+Package xorg-x11-xkb-utils-7.7-17.fc24.i686 is already installed, skipping.
+Package xorg-x11-drv-evdev-2.10.4-1.fc25.i686 is already installed, skipping.
+Package xorg-x11-xinit-1.3.4-12.fc25.i686 is already installed, skipping.
+Package xdg-user-dirs-0.15-8.fc24.i686 is already installed, skipping.
+Package dbus-x11-1:1.11.6-1.fc25.i686 is already installed, skipping.
+Package gnome-keyring-3.20.0-1.fc25.i686 is already installed, skipping.
+Package gdb-7.12-24.fc25.i686 is already installed, skipping.
+Package libxklavier-5.4-6.fc24.i686 is already installed, skipping.
+Package gtksourceview3-3.22.0-2.fc25.i686 is already installed, skipping.
+Package dconf-0.26.0-1.fc25.i686 is already installed, skipping.
+Package gsettings-desktop-schemas-3.22.0-1.fc25.i686 is already installed, skipping.
+Package dejavu-sans-fonts-2.35-3.fc24.noarch is already installed, skipping.
+Package dejavu-serif-fonts-2.35-3.fc24.noarch is already installed, skipping.
+Package zip-3.0-16.fc24.i686 is already installed, skipping.
+Package unzip-6.0-30.fc25.i686 is already installed, skipping.
+Package webkitgtk4-2.14.1-2.fc25.i686 is already installed, skipping.
+Package mobile-broadband-provider-info-1.20151214-1.fc24.noarch is already installed, skipping.
+Package gnome-themes-standard-3.22.2-1.fc25.i686 is already installed, skipping.
+Package xorg-x11-server-Xorg-1.19.0-0.3.20161026.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-fbdev-0.4.3-25.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-vesa-2.3.2-25.fc25.i686 is already installed, skipping.
+No package xorg-x11-drv-vmmouse available.
+Package xorg-x11-drv-intel-2.99.917-26.20160929.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-vmware-13.0.2-12.20150211git8f0cf7c.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-wacom-0.33.0-2.20160929gitb61d1711.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-openchrome-0.5.0-2.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-qxl-0.1.4-10.20160929gite13d28ee.fc25.i686 is already installed, skipping.
+Package xorg-x11-drv-ati-7.7.1-1.20160928git3fc839ff.fc25.i686 is already installed, skipping.
+Package gvfs-1.30.1.1-1.fc25.i686 is already installed, skipping.
+Error: Unable to find a match.
+Traceback (most recent call last):
+  File "./osbuild", line 503, in <module>
+    if not main():
+  File "./osbuild", line 482, in main
+    if not setup(options.command):
+  File "./osbuild", line 297, in setup
+    install_system_deps()
+  File "./osbuild", line 190, in install_system_deps
+    subprocess.check_call(args)
+  File "/usr/local/lib/python2.7/subprocess.py", line 541, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['sudo', 'dnf', 'install', u'xorg-x11-server-Xvfb', u'xorg-x11-utils', u'gcc', u'python-devel', u'bzip2', u'nodejs', u'xz', u'sudo', u'automake', u'redhat-rpm-config', u'gstreamer-python', u'pyabiword', u'gstreamer-plugins-good', u'evince-devel', u'gtk3-devel', u'libSM-devel', u'alsa-lib-devel', u'librsvg2-devel', u'GConf2-devel', u'gobject-introspection-devel', u'file', u'deltarpm', u'ccache', u'make', u'git', u'findutils', u'autoconf', u'tar', u'texinfo', u'vte3-devel', u'python-olpcgames', u'libabiword', u'libxml2-python', u'gstreamer1-plugins-good', u'pygtk2-devel', u'gnome-python2-gconf', u'hippo-canvas-python', u'gnome-python2-rsvg', u'shadow-utils', u'python-pip', u'python-BeautifulSoup', u'xorg-x11-xkb-utils', u'xorg-x11-drv-evdev', u'xorg-x11-xinit', u'xorg-x11-server-Xephyr', u'xdg-user-dirs', u'dbus-x11', u'gnome-keyring', u'python-setuptools', u'xapian-bindings-python', u'gdb', u'intltool', u'libxklavier', u'pygobject3', u'python-decorator', u'libwnck3-devel', u'dbus-python', u'python-telepathy', u'python-dateutil', u'python-mock', u'gtksourceview3', u'dconf', u'gsettings-desktop-schemas', u'metacity', u'dejavu-sans-fonts', u'dejavu-serif-fonts', u'telepathy-mission-control', u'zip', u'unzip', u'libwebkit2gtk', u'gstreamer-plugins-espeak', u'telepathy-salut', u'telepathy-gabble', u'mobile-broadband-provider-info', u'gnome-themes-standard', u'xorg-x11-drv-modesetting', u'xorg-x11-drv-fbdev', u'xorg-x11-drv-vesa', u'xorg-x11-drv-vmmouse', u'xorg-x11-drv-intel', u'xorg-x11-drv-vmware', u'xorg-x11-drv-synaptics', u'xorg-x11-drv-wacom', u'xorg-x11-drv-openchrome', u'xorg-x11-drv-qxl', u'xorg-x11-drv-ati', u'gvfs', u'gnome-common', u'icon-slicer', u'gtk2-devel', u'icon-naming-utils', u'xorg-x11-apps']' returned non-zero exit status 1

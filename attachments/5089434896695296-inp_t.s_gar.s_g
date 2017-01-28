@@ -1,0 +1,6 @@
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd' [
+	<!ENTITY stroke_color "#666666">
+	<!ENTITY fill_color "#ffffff">
+]><svg height="55mm" id="svg8" version="1.1" viewBox="0 0 55 55" width="55mm" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg">
+<rect height="50" style="fill:&fill_color;;fill-opacity:1;stroke:&stroke_color;;stroke-width:3.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" width="50" x="2.5" y="2.5"/>
+</svg>
