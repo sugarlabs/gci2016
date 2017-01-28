@@ -90,3 +90,6 @@ ENV/
 
 # private data
 data.py
+
+requests/
+bs4/
