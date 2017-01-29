@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>{{ org_name }} | {{ task_name }}</title>
+ <style type="text/css">
+  body { font-family : Monospace; font-size: 14px;}
+  P { font-weight: normal; font-family : Monospace; color: black; background-color: transparent;}
+  B { font-weight: normal; color: black; background-color: transparent;}
+  A:visited { font-weight : normal; text-decoration : none; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+  A:link    { font-weight : normal; text-decoration : none; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+  A:hover   { color : #000000; font-weight : normal; text-decoration : underline; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+  A:active  { color : #000000; font-weight: normal; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+  #tag {
+    background-color: gray;
+    color: white;
+    border-radius: 20px;
+    border: solid gray 5px;
+    }
+ </style>
+</head>
+<body>
+
+	<h1><img style="width: 10%; float: right; margin-top: -1%;" src="/static/img/{{org_slug}}.png"> {{ task_name }}<br><small><small>{{org_name}}</small></small></h1>
+	Mentored by: 
+	{% for mentor in mentors %}
+	{{ mentor }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+    <hr>
+    {% autoescape false %}
+    {{ task_description }}
+    {% endautoescape %}
+    <br>
+    <br>
+    <hr>
+    Tags:{% for tag in tags %}
+	<span id="tag">{{ tag }}</span>
+    {% endfor %}
+    <br>
+    <hr>
+    <a href="/">Index</a>
+</body>
+
+
+

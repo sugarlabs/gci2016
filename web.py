@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import json
-
+import utils
 from flask import Flask
 from flask import render_template
 
@@ -62,7 +62,23 @@ def tasks():
 @app.route('/task/<task_id>/definition')
 @app.route('/task/<task_id>/definition/')
 def task_definition(task_id):
-    return task_id
+    task = utils.get_task_definition(task_id)
+    org_name = utils.get_org(task["organization_id"], "name")
+    org_slug = utils.get_org(task["organization_id"], "slug")
+
+    task_name = task["name"]
+    task_description = task["description"].replace("\n", "<br>")
+    task_tags = task["tags"]
+    mentors = task["assignments_profile_display_names"]
+
+    return render_template(
+        "definition.html",
+        org_name=org_name,
+        org_slug=org_slug,
+        task_name=task_name,
+        task_description=task_description,
+        tags=task_tags,
+        mentors=mentors)
 
 
 if __name__ == '__main__':
