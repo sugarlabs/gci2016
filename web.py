@@ -27,7 +27,7 @@ app.jinja_env.add_extension('jinja2.ext.do')
 
 @app.route('/')
 def tasks():
-    f = open("tasks_definitions.json", "r")
+    f = open("json_data/tasks_definitions.json", "r")
     tasks_raw = json.load(f)
     f.close()
 
@@ -42,7 +42,7 @@ def tasks():
 
     tasks_instances = []
 
-    f = open("tasks_instances.json", "r")
+    f = open("json_data/tasks_instances.json", "r")
     tasks_raw = json.load(f)
     f.close()
 

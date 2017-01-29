@@ -1,5 +1,5 @@
 import json
-f = open("tasks_comments.json", "r")
+f = open("json_data/tasks_comments.json", "r")
 
 tasks_raw = json.load(f)
 f.close()

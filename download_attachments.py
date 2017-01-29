@@ -38,7 +38,7 @@ def format_size(size):
     else:
         return '%d GB' % (size / 1024 ** 3)
 
-f = open("tasks_comments.json", "r")
+f = open("json_data/tasks_comments.json", "r")
 tasks_raw = json.load(f)
 f.close()
 
@@ -55,7 +55,7 @@ for comment in results:
             file_size = format_size(attachment["file_size"])
             files.append([id, filename, file_size, url])
 
-f = open("files.json", "w")
+f = open("json_data/files.json", "w")
 json.dump(files, f, indent=4)
 f.close()
 

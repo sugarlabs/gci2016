@@ -19,7 +19,7 @@ import json
 import requests
 import os
 
-f = open("orgs_data.json", "r")
+f = open("json_data/orgs_data.json", "r")
 data = json.load(f)["results"]
 f.close()
 
