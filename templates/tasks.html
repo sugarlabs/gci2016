@@ -15,17 +15,17 @@
 </head>
 <body>
 	<h1>GCI 2016 tasks</h1>
-	GCI 2016<br>
+	Tasks published<br>
 	├── Task<br>
-    │   └── Instance (if task is completed) by someone 	<br>
+    │   └── Instance (if task is completed)<br>
     │<br>
 
     {% for definition in tasks_definitions %}	
 
 	{% if not loop.last %}
-	├── <a href="https://codein.withgoogle.com/tasks/{{ definition[1] }}/">{{ definition[0] }}</a><br>
+	├── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
 	{% else %}
-	└── <a href="https://codein.withgoogle.com/tasks/{{ definition[1] }}/">{{ definition[0] }}</a><br>
+	└── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
     {% endif %}
 
         {% set this_task_instances = [] %}
@@ -35,15 +35,30 @@
             {% endif %}
         {% endfor %}
 
+
         {% for instance in this_task_instances %}
-            {% if definition[1] == instance[1] %}
-                {% if not loop.last %}
-                │   ├── <a href="https://codein.withgoogle.com/dashboard/task-instances/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br>
-                {% else %}
-                │   └── <a href="https://codein.withgoogle.com/dashboard/task-instances/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br> 
-                {% endif %}    
-            {% endif %}         
+            {% if not loop.last %}
+            │   ├── <a href="/task/{{ definition[1] }}/instance/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br>
+            {% else %}
+            │   └── <a href="/task/{{ definition[1] }}/instance/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br> 
+            {% endif %}      
         {% endfor %}
+
+    {% if not loop.last %}
+    │<br>
+    {% endif %}
+
+    {% endfor %}
+    
+	<br>Tasks non-published<br>
+	├── Task<br>
+    │<br>
+    {% for definition in non_published %}
+	{% if not loop.last %}
+	├── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
+	{% else %}
+	└── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
+    {% endif %}
 
     {% if not loop.last %}
     │<br>

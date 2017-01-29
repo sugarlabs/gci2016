@@ -1,8 +1,10 @@
 import json
-x = open("tasks_comments.json", "r")
+import sys
+
+x = open(sys.argv[1], "r")
 z = json.load(x)
 x.close()
 
-x = open("tasks_comments.json", "w")
+x = open(sys.argv[1], "w")
 json.dump(z, x, indent=4)
 x.close()

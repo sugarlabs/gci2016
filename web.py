@@ -21,6 +21,7 @@ from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.jinja_env.add_extension('jinja2.ext.do')
 
 
@@ -32,9 +33,12 @@ def tasks():
 
     results = tasks_raw["results"]
     tasks_definitions = []
+    non_published = []
     for task in results:
         if task["status"] == 2:
             tasks_definitions.append([task["name"], task["id"]])
+        else:
+            non_published.append([task["name"], task["id"]])
 
     tasks_instances = []
 
@@ -51,7 +55,15 @@ def tasks():
     return render_template(
         "tasks.html",
         tasks_definitions=sorted(tasks_definitions),
-        tasks_instances=tasks_instances)
+        tasks_instances=tasks_instances,
+        non_published=non_published)
+
+
+@app.route('/task/<task_id>/definition')
+@app.route('/task/<task_id>/definition/')
+def task_definition(task_id):
+    return task_id
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)
