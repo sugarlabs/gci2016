@@ -138,7 +138,7 @@ def get_comments(task_instance_id):
                 name = attachment["filename"]
 
                 comment[
-                    "text"] += "%s <a href='%s'>%s</a> (%s)\n" % (thing.decode("utf-8"), url, name, size)
+                    "text"] += "%s <a href='%s'>%s</a> (%s)<br>" % (thing.decode("utf-8"), url, name, size)
                 current += 1
 
         comment["text"] = "<big><b>%s</b>%s<span class='totheright'>%s</span></big><br><br>%s" % (

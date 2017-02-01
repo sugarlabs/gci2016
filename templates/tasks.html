@@ -17,7 +17,7 @@
 	<h1>GCI 2016 tasks</h1>
 	Tasks published<br>
 	├── Task<br>
-    │   └── Instance (if task is completed)<br>
+    │   └── Instance (if task was claimed)<br>
     │<br>
 
     {% for definition in tasks_definitions %}	
@@ -50,7 +50,7 @@
 
     {% endfor %}
     
-	<br>Tasks non-published<br>
+	<br>Tasks drafts (not published)<br>
 	├── Task<br>
     │<br>
     {% for definition in non_published %}
