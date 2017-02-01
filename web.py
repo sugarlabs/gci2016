@@ -39,27 +39,40 @@ del f
 
 @app.route('/')
 def tasks():
-    results = tasks_definitions_raw["results"]
-    tasks_definitions = []
-    non_published = []
-    for task in results:
-        if task["status"] == 2:
-            instances_count = utils.get_instances_count(task["id"])
-            tasks_definitions.append(
-                [task["name"], task["id"], instances_count])
-        else:
-            non_published.append([task["name"], task["id"]])
+    if not utils.tasks_definitions_cache or not utils.tasks_instances_cache \
+            or not utils.non_published_cache:
+        results = tasks_definitions_raw["results"]
+        tasks_definitions = []
+        non_published = []
+        for task in results:
+            if task["status"] == 2:
+                instances_count = utils.get_instances_count(task["id"])
+                tasks_definitions.append(
+                    [task["name"], task["id"], instances_count])
+            else:
+                non_published.append([task["name"], task["id"]])
 
-    results = tasks_instances_raw["results"]
-    tasks_instances = []
-    for task in results:
-        tasks_instances.append([task["task_definition"]["name"], task[
-                               "task_definition_id"], task["id"], task["claimed_by"]["display_name"]])
+        results = tasks_instances_raw["results"]
+        tasks_instances = []
+        for task in results:
+            tasks_instances.append([task["task_definition"]["name"],
+                                    task["task_definition_id"], task["id"],
+                                    task["claimed_by"]["display_name"]])
 
-    tasks_definitions = sorted(
-        tasks_definitions,
-        key=lambda x: x[2],
-        reverse=True)
+        tasks_definitions = sorted(
+            tasks_definitions,
+            key=lambda x: x[2],
+            reverse=True)
+
+        utils.tasks_definitions_cache = tasks_definitions
+        utils.tasks_instances_cache = tasks_instances
+        utils.non_published_cache = non_published
+
+    else:
+        tasks_definitions = utils.tasks_definitions_cache
+        tasks_instances = utils.tasks_instances_cache
+        non_published = utils.non_published_cache
+
     return render_template(
         "tasks.html",
         tasks_definitions=tasks_definitions,
@@ -84,7 +97,9 @@ def task_definition(task_id, task_instance=None):
     task_categories = utils.get_categories(task_id)
     comments = None
     if task_instance:
-        comments = utils.get_comments(task_instance)
+        if task_instance not in utils.tasks_comments_cache:
+            utils.tasks_comments_cache[
+                task_instance] = utils.get_comments(task_instance)
 
     return render_template(
         "task.html",
@@ -96,7 +111,7 @@ def task_definition(task_id, task_instance=None):
         mentors=mentors,
         days=days,
         categories=task_categories,
-        comments=comments)
+        comments=utils.tasks_comments_cache[task_instance])
 
 
 @app.route("/attachments/<attachment_id>")
