@@ -19,24 +19,13 @@ import json
 import os
 from gsession import GSession
 from threading import Thread
+from utils import format_size
 
 session = GSession()
 
 if not os.path.exists("attachments"):
     os.mkdir("attachments")
 
-
-def format_size(size):
-    if not size:
-        return 'Empty'
-    elif size < 1024:
-        return '%d B' % size
-    elif size < 1024 ** 2:
-        return '%d KB' % (size / 1024)
-    elif size < 1024 ** 3:
-        return '%d MB' % (size / 1024 ** 2)
-    else:
-        return '%d GB' % (size / 1024 ** 3)
 
 f = open("json_data/tasks_comments.json", "r")
 tasks_raw = json.load(f)

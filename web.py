@@ -19,6 +19,7 @@ import json
 import utils
 from flask import Flask
 from flask import render_template
+from flask import send_file
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -61,7 +62,9 @@ def tasks():
 
 @app.route('/task/<task_id>/definition')
 @app.route('/task/<task_id>/definition/')
-def task_definition(task_id):
+@app.route('/task/<task_id>/instance/<task_instance>')
+@app.route('/task/<task_id>/instance/<task_instance>/')
+def task_definition(task_id, task_instance=None):
     task = utils.get_task_definition(task_id)
     org_name = utils.get_org(task["organization_id"], "name")
     org_slug = utils.get_org(task["organization_id"], "slug")
@@ -70,16 +73,32 @@ def task_definition(task_id):
     task_description = task["description"].replace("\n", "<br>")
     task_tags = task["tags"]
     mentors = task["assignments_profile_display_names"]
+    days = task["time_to_complete_in_days"]
+    task_categories = utils.get_categories(task_id)
+    comments = None
+    if task_instance:
+        comments = utils.get_comments(task_instance)
 
     return render_template(
-        "definition.html",
+        "task.html",
         org_name=org_name,
         org_slug=org_slug,
         task_name=task_name,
         task_description=task_description,
         tags=task_tags,
-        mentors=mentors)
+        mentors=mentors,
+        days=days,
+        categories=task_categories,
+        comments=comments)
 
+
+@app.route("/attachments/<attachment_id>")
+def get_attachment(attachment_id):
+    filename = utils.get_filename(attachment_id)
+    print filename
+    return send_file('attachments/%s' % filename,
+                     attachment_filename=filename,
+                     as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)

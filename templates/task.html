@@ -5,7 +5,6 @@
  <style type="text/css">
   body { font-family : Monospace; font-size: 14px;}
   P { font-weight: normal; font-family : Monospace; color: black; background-color: transparent;}
-  B { font-weight: normal; color: black; background-color: transparent;}
   A:visited { font-weight : normal; text-decoration : none; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
   A:link    { font-weight : normal; text-decoration : none; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
   A:hover   { color : #000000; font-weight : normal; text-decoration : underline; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
@@ -16,15 +15,29 @@
     border-radius: 20px;
     border: solid gray 5px;
     }
+  .totheright {
+    float: right;
+    }
+  #orglogo { 
+  width: 5%;
+  float: right;
+  }
  </style>
 </head>
 <body>
 
-	<h1><img style="width: 10%; float: right; margin-top: -1%;" src="/static/img/{{org_slug}}.png"> {{ task_name }}<br><small><small>{{org_name}}</small></small></h1>
-	Mentored by: 
+	<h1>{{ task_name }}<br><small><small>{{org_name}}</small></small></h1>
+	Mentored by:
 	{% for mentor in mentors %}
 	{{ mentor }}{% if not loop.last %},{% endif %}
     {% endfor %}
+    <br>
+	<span id="categories">
+	{% for category in categories %}
+	{{ category }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+	</span>
+	<span class="totheright">{{ days }} days.</span>
     <hr>
     {% autoescape false %}
     {{ task_description }}
@@ -37,7 +50,15 @@
     {% endfor %}
     <br>
     <hr>
-    <a href="/">Index</a>
+    {% if 'instance' in request.path %}
+    <h1>Comments ({{comments|length}})</h1>
+	{% for comment in comments %}
+    {% autoescape false %}
+	{{ comment['text'] }}{% if not loop.last %}<hr>{% else %}<br>{% endif %}
+    {% endautoescape %}
+    {% endfor %}
+    {% endif %}
+    <br><a href="/">Index</a>
 </body>
 
 

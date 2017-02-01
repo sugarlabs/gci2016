@@ -1,15 +1,8 @@
-import json
-f = open("json_data/tasks_comments.json", "r")
-
-tasks_raw = json.load(f)
-f.close()
-results = tasks_raw["results"]
-
-for key in results:
-    if key["task_instance_id"] == 63477582334525444:
-        print key["author"]["display_name"], key["text"]
-        print key
-        print
-
-    if key["attachments"]:
-        print key["attachments"]
+import utils
+comments = utils.get_comments(5692814887223296)
+comments.reverse()
+for comment in comments:
+    print comment["old_task_instance_status"]
+    print comment["new_task_instance_status"]
+#	print comment["text"]
+    print
