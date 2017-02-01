@@ -32,6 +32,27 @@ task_status = {1: "Task claimed",
                7: "Task approved",
                8: "Task approved -- Pending parental consent"}
 
+# Open files only once
+f = open("json_data/orgs_data.json", "r")
+org_global_data = json.load(f)["results"]
+f.close()
+del f
+
+f = open("json_data/tasks_definitions.json", "r")
+tasks_definitions_raw = json.load(f)["results"]
+f.close()
+del f
+
+f = open("json_data/tasks_comments.json", "r")
+comments_raw = json.load(f)["results"]
+f.close()
+del f
+
+f = open("json_data/files.json", "r")
+files_raw = json.load(f)
+f.close()
+del f
+
 
 def format_size(size):
     if not size:
@@ -47,12 +68,8 @@ def format_size(size):
 
 
 def get_org(org_id, key):
-    f = open("json_data/orgs_data.json", "r")
-    data = json.load(f)["results"]
-    f.close()
-
     org_name = None
-    for org_data in data:
+    for org_data in org_global_data:
         if int(org_data["id"]) == int(org_id):
             org_name = org_data[key]
 
@@ -60,12 +77,8 @@ def get_org(org_id, key):
 
 
 def get_task_definition(task_id):
-    f = open("json_data/tasks_definitions.json", "r")
-    tasks_raw = json.load(f)["results"]
-    f.close()
-
     task = None
-    for task_definition in tasks_raw:
+    for task_definition in tasks_definitions_raw:
         if int(task_id) == int(task_definition["id"]):
             task = task_definition
 
@@ -82,10 +95,6 @@ def get_categories(task_id):
 
 
 def get_comments(task_instance_id):
-    f = open("json_data/tasks_comments.json", "r")
-    comments_raw = json.load(f)["results"]
-    f.close()
-
     comments = []
     for comment in comments_raw:
         if comment["task_instance_id"] == int(task_instance_id):
@@ -141,12 +150,8 @@ def get_comments(task_instance_id):
 
 
 def get_filename(attachment_id):
-    f = open("json_data/files.json", "r")
-    files = json.load(f)
-    f.close()
-
     filename = ""
-    for f in files:
+    for f in files_raw:
         if f[0] == int(attachment_id):
             filename = "%s-%s" % (attachment_id, f[1])
 

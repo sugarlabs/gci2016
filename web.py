@@ -25,14 +25,21 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.jinja_env.add_extension('jinja2.ext.do')
 
+# Open files only once
+f = open("json_data/tasks_definitions.json", "r")
+tasks_definitions_raw = json.load(f)
+f.close()
+del f
+
+f = open("json_data/tasks_instances.json", "r")
+tasks_instances_raw = json.load(f)
+f.close()
+del f
+
 
 @app.route('/')
 def tasks():
-    f = open("json_data/tasks_definitions.json", "r")
-    tasks_raw = json.load(f)
-    f.close()
-
-    results = tasks_raw["results"]
+    results = tasks_definitions_raw["results"]
     tasks_definitions = []
     non_published = []
     for task in results:
@@ -41,13 +48,7 @@ def tasks():
         else:
             non_published.append([task["name"], task["id"]])
 
-    tasks_instances = []
-
-    f = open("json_data/tasks_instances.json", "r")
-    tasks_raw = json.load(f)
-    f.close()
-
-    results = tasks_raw["results"]
+    results = tasks_instances_raw["results"]
     tasks_instances = []
     for task in results:
         tasks_instances.append([task["task_definition"]["name"], task[
@@ -95,7 +96,6 @@ def task_definition(task_id, task_instance=None):
 @app.route("/attachments/<attachment_id>")
 def get_attachment(attachment_id):
     filename = utils.get_filename(attachment_id)
-    print filename
     return send_file('attachments/%s' % filename,
                      attachment_filename=filename,
                      as_attachment=True)
