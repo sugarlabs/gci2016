@@ -1,73 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
- <title>Sugar Labs 2016 tasks</title>
- <style type="text/css">
-  body { font-family : Monospace; font-size: 14px;}
-  P { font-weight: normal; font-family : Monospace; color: black; background-color: transparent;}
-  B { font-weight: normal; color: black; background-color: transparent;}
-  A:visited { font-weight : normal; text-decoration : none; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  A:link    { font-weight : normal; text-decoration : none; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  A:hover   { color : #000000; font-weight : normal; text-decoration : underline; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  A:active  { color : #000000; font-weight: normal; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-
- </style>
-</head>
-<body>
-	<h1>GCI 2016 tasks</h1>
-        - {{ tasks_definitions|length }} tasks published.<br>
-        - {{ tasks_instances|length }} instances.<br>
-        - {{ non_published|length }} tasks were not published.<br><br>
-	Tasks published<br>
-	├── Task<br>
-    │   └── Instance (if task was claimed)<br>
+  <head>
+    <title>Sugar Labs 2016 tasks</title>
+    <style type="text/css">
+      body { font-family : Monospace; font-size: 14px;}
+      P { font-weight: normal; font-family : Monospace; color: black; background-color: transparent;}
+      B { font-weight: normal; color: black; background-color: transparent;}
+      A:visited { font-weight : normal; text-decoration : none; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+      A:link    { font-weight : normal; text-decoration : none; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+      A:hover   { color : #000000; font-weight : normal; text-decoration : underline; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+      A:active  { color : #000000; font-weight: normal; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
+    </style>
+  </head>
+  <body>
+    <h1>GCI 2016 tasks</h1>
+    - {{ tasks_definitions|length }} tasks published.<br>
+    - {{ tasks_instances|length }} instances.<br>
+    - {{ non_published|length }} tasks were not published.<br><br>
+    Tasks published<br>
+    ├── Task<br>
+    │   └── Instance (if task was claimed)<br>
     │<br>
-
     {% for definition in tasks_definitions %}	
-
-	{% if not loop.last %}
-	├── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
-	{% else %}
-	└── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
+    {% if not loop.last %}
+    ├── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
+    {% else %}
+    └── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
     {% endif %}
-
-        {% set this_task_instances = [] %}
-        {% for instance in tasks_instances %}
-            {% if definition[1] == instance[1] %}
-                {% do this_task_instances.append(instance) %}
-            {% endif %}
-        {% endfor %}
-
-
-        {% for instance in this_task_instances %}
-            {% if not loop.last %}
-            │   ├── <a href="/task/{{ definition[1] }}/instance/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br>
-            {% else %}
-            │   └── <a href="/task/{{ definition[1] }}/instance/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br> 
-            {% endif %}      
-        {% endfor %}
-
+    {% set this_task_instances = [] %}
+    {% for instance in tasks_instances %}
+    {% if definition[1] == instance[1] %}
+    {% do this_task_instances.append(instance) %}
+    {% endif %}
+    {% endfor %}
+    {% for instance in this_task_instances %}
+    {% if not loop.last %}
+    │   ├── <a href="/task/{{ definition[1] }}/instance/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br>
+    {% else %}
+    │   └── <a href="/task/{{ definition[1] }}/instance/{{ instance[2] }}">{{ instance[0] }}</a> by {{ instance[3] }}<br> 
+    {% endif %}      
+    {% endfor %}
     {% if not loop.last %}
     │<br>
     {% endif %}
-
     {% endfor %}
-    
-	<br>Tasks drafts (not published)<br>
-	├── Task<br>
+    <br>Tasks drafts (not published)<br>
+    ├── Task<br>
     │<br>
     {% for definition in non_published %}
-	{% if not loop.last %}
-	├── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
-	{% else %}
-	└── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
+    {% if not loop.last %}
+    ├── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
+    {% else %}
+    └── <a href="/task/{{ definition[1] }}/definition/">{{ definition[0] }}</a><br>
     {% endif %}
-
     {% if not loop.last %}
     │<br>
     {% endif %}
-
     {% endfor %}
-</body>
+  </body>
 </html>
-
