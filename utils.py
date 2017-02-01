@@ -53,6 +53,11 @@ files_raw = json.load(f)
 f.close()
 del f
 
+f = open("json_data/tasks_instances.json", "r")
+tasks_instances_raw = json.load(f)["results"]
+f.close()
+del f
+
 
 def format_size(size):
     if not size:
@@ -137,8 +142,8 @@ def get_comments(task_instance_id):
                 size = format_size(attachment["file_size"])
                 name = attachment["filename"]
 
-                comment[
-                    "text"] += "%s <a href='%s'>%s</a> (%s)<br>" % (thing.decode("utf-8"), url, name, size)
+                comment["text"] += "%s <a href='%s'>%s</a> (%s)<br>" % (
+                    thing.decode("utf-8"), url, name, size)
                 current += 1
 
         comment["text"] = "<big><b>%s</b>%s<span class='totheright'>%s</span></big><br><br>%s" % (
@@ -156,3 +161,11 @@ def get_filename(attachment_id):
             filename = "%s-%s" % (attachment_id, f[1])
 
     return filename
+
+
+def get_instances_count(task_id):
+    count = 0
+    for task in tasks_instances_raw:
+        if task["task_definition_id"] == task_id:
+            count += 1
+    return count

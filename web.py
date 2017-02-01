@@ -44,7 +44,9 @@ def tasks():
     non_published = []
     for task in results:
         if task["status"] == 2:
-            tasks_definitions.append([task["name"], task["id"]])
+            instances_count = utils.get_instances_count(task["id"])
+            tasks_definitions.append(
+                [task["name"], task["id"], instances_count])
         else:
             non_published.append([task["name"], task["id"]])
 
@@ -54,9 +56,13 @@ def tasks():
         tasks_instances.append([task["task_definition"]["name"], task[
                                "task_definition_id"], task["id"], task["claimed_by"]["display_name"]])
 
+    tasks_definitions = sorted(
+        tasks_definitions,
+        key=lambda x: x[2],
+        reverse=True)
     return render_template(
         "tasks.html",
-        tasks_definitions=sorted(tasks_definitions),
+        tasks_definitions=tasks_definitions,
         tasks_instances=tasks_instances,
         non_published=non_published)
 
