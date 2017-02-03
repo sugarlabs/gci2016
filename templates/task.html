@@ -50,14 +50,9 @@
     <br>
     <hr>
     {% if 'instance' in request.path %}
-    <h1>Comments ({{comments|length}})</h1>
-    {% for comment in comments %}
     {% autoescape false %}
-    {{ comment['text'] }}{% if not loop.last %}
-    <hr>
-    {% else %}<br>{% endif %}
+    {{ attachments }}
     {% endautoescape %}
-    {% endfor %}
     {% endif %}
     <br><a href="/">Index</a>
   </body>
