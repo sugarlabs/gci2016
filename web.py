@@ -95,11 +95,11 @@ def task_definition(task_id, task_instance=None):
     mentors = task["assignments_profile_display_names"]
     days = task["time_to_complete_in_days"]
     task_categories = utils.get_categories(task_id)
-    comments = None
+    attachments = None
     if task_instance:
-        if task_instance not in utils.tasks_comments_cache:
-            utils.tasks_comments_cache[
-                task_instance] = utils.get_comments(task_instance)
+        if task_instance not in utils.tasks_attachments_cache:
+            utils.tasks_attachments_cache[
+                task_instance] = utils.get_attachments(task_instance)
 
     return render_template(
         "task.html",
@@ -111,7 +111,7 @@ def task_definition(task_id, task_instance=None):
         mentors=mentors,
         days=days,
         categories=task_categories,
-        comments=utils.tasks_comments_cache[task_instance])
+        attachments=utils.tasks_attachments_cache[task_instance])
 
 
 @app.route("/attachments/<attachment_id>")

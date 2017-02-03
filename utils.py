@@ -62,7 +62,7 @@ del f
 tasks_definitions_cache = None
 tasks_instances_cache = None
 non_published_cache = None
-tasks_comments_cache = {}
+tasks_attachments_cache = {}
 
 
 def format_size(size):
@@ -105,40 +105,22 @@ def get_categories(task_id):
     return categories
 
 
-def get_comments(task_instance_id):
+def get_attachments(task_instance_id):
     comments = []
     for comment in comments_raw:
         if comment["task_instance_id"] == int(task_instance_id):
-            comments.append(comment)
+            if comment["attachments"]:
+                comments.append(comment)
 
-    comments.reverse()
-    student = comments[0]["author"]["display_name"]
-    student_claimed = comments[0]["created"]
+    header = "<b>Attachments</b><br>\n"
+    comment_text = header
+    last_attachment = 0
+    for comment in comments:
+        last_attachment += len(comment["attachments"])
 
     for comment in comments:
-        comment["text"] = comment["text"].replace("\n", "<br>")
-
-        old_status = comment["old_task_instance_status"]
-        new_status = comment["new_task_instance_status"]
-
-        if old_status != new_status:
-            comment["text"] = task_status[new_status]
-
-        author_type = " (mentor) "
-        if comment["author_is_student"]:
-            author_type = " (student) "
-
-        if comment["author"] is None:
-            comment["author"] = {"display_name": "Google Code-In System"}
-            author_type = ""
-
-        if comment["attachments"]:
-            if comment["text"]:
-                comment["text"] += "<br><br>"
-
-            comment["text"] += "Attachments:<br>\n"
+        for attachment in comment["attachments"]:
             current = 1
-            last_attachment = len(comment["attachments"])
             for attachment in comment["attachments"]:
                 thing = "├──"
                 if current == last_attachment:
@@ -148,16 +130,17 @@ def get_comments(task_instance_id):
                 size = format_size(attachment["file_size"])
                 name = attachment["filename"]
 
-                comment["text"] += "%s <a href='%s'>%s</a> (%s)<br>" % (
+                comment_text += "%s <a href='%s'>%s</a> (%s)<br>\n" % (
                     thing.decode("utf-8"), url, name, size)
                 current += 1
 
-        comment["text"] = "<big><b>%s</b>%s<span class='totheright'>%s</span></big><br><br>%s" % (
-            comment["author"]["display_name"], author_type, comment["created"], comment["text"])
+    if comment_text == header:
+        comment_text += "└── None.<br>"
 
-    comments[0]["text"] = "<big><b>%s</b> (student)  <span class='totheright'>%s</span></big><br><br>%s" % (
-        student, student_claimed, task_status[1])
-    return comments
+    try:
+        return unicode(comment_text, "utf8")
+    except:
+        return comment_text
 
 
 def get_filename(attachment_id):
