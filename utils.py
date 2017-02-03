@@ -119,20 +119,19 @@ def get_attachments(task_instance_id):
         last_attachment += len(comment["attachments"])
 
     for comment in comments:
+        current = 1
         for attachment in comment["attachments"]:
-            current = 1
-            for attachment in comment["attachments"]:
-                thing = "├──"
-                if current == last_attachment:
-                    thing = "└──"
+            thing = "├──"
+            if current == last_attachment:
+                thing = "└──"
 
-                url = "/attachments/%s" % attachment["id"]
-                size = format_size(attachment["file_size"])
-                name = attachment["filename"]
+            url = "/attachments/%s" % attachment["id"]
+            size = format_size(attachment["file_size"])
+            name = attachment["filename"]
 
-                comment_text += "%s <a href='%s'>%s</a> (%s)<br>\n" % (
-                    thing.decode("utf-8"), url, name, size)
-                current += 1
+            comment_text += "%s <a href='%s'>%s</a> (%s)<br>\n" % (
+                thing.decode("utf-8"), url, name, size)
+            current += 1
 
     if comment_text == header:
         comment_text += "└── None.<br>"
