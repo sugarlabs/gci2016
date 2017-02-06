@@ -100,6 +100,8 @@ def task_definition(task_id, task_instance=None):
         if task_instance not in utils.tasks_attachments_cache:
             utils.tasks_attachments_cache[
                 task_instance] = utils.get_attachments(task_instance)
+    else:
+        utils.tasks_attachments_cache[task_instance] = ["Too lazy to fix this."]
 
     return render_template(
         "task.html",

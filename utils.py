@@ -118,8 +118,8 @@ def get_attachments(task_instance_id):
     for comment in comments:
         last_attachment += len(comment["attachments"])
 
+    current = 1
     for comment in comments:
-        current = 1
         for attachment in comment["attachments"]:
             thing = "├──"
             if current == last_attachment:
